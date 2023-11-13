@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação WEB - JS</title>
+    <style>
+        .num1{
+            display: inline-block;
+        }
+        .res{
+            display: inline-block;
+            margin-left: 1em;
+        }
+        .text1{
+            display: inline-block;
+        }
+        .calculadora{
+            border: 1px solid black;
+            width: 500px;
+        }
+        #operador{
+            margin-left: 5em;
+        }
+        #calcule{
+            margin-left: 5em;
+        }
+        .custodocarro{
+            border: 1px solid black;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Exercicio 2</h3>
+    <textarea id="msg" cols="50" rows="10" maxlength="100"></textarea><hr>
+
+    <h3>Exercicio 3</h3>
+    <textarea id="text" cols="50" rows="10" maxlength="100"></textarea><hr>
+
+    <h3>Exercicio 4</h3>
+    <h4>Insira um numero</h4>
+    <input type="number" id="number">
+    <button id="click" >OK</button>
+    <textarea name="text" id="exerc4" cols="50" rows="10" maxlength="100" readonly></textarea><hr>
+
+    <h3>Exercicio 5</h3>
+    <div class="calculadora">
+    <h4 class="text1">Insira um número</h4>
+    <input type="number" id="num1">
+    <select name="Selecione" id="operador">
+    <option value="+">Adição</option>
+    <option value="-">Subtração</option>
+    <option value="*">Multiplicação</option>
+    <option value="/">Divisão</option>
+    </select>
+    <h4 class="num1">Insira outro número</h4>
+    <input type="number" id="num2" class="num1">
+    <button id="calcule" class="calcule">Calcular</button>
+    <h4 class="res">resultado</h4>
+    <textarea name="text" id="res" cols="10" rows="2" class="res"></textarea>
+    </div><hr>
+
+    <h3>Exercicio 6</h3>
+    <div>
+        <h4> ARRAY [1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10] </h4>
+        <h4>Valores Pares ARRAY</h4>
+        <label id="pares"></label>
+    </div><hr>
+
+<h3>Exercico 6 </h3>
+<div class="custodocarro">
+    <h4 class="text1">Insira o custo de fábrica</h4>
+    <input type="number" id="custoFabrica">
+    <h4 class="num1">Insira o Percentual do Distribuidor</h4>
+    <input type="number" id="percDistribuidor" class="num1">
+    <h4 class="num1">Insira o Percentual de Imposto</h4>
+    <input type="number" id="percImposto" class="num1">
+    <button id="btnCalcular" class="calcule">Calcular</button>
+    <h4 class="res">Valor final do Veiculo</h4>
+    <textarea name="text" id="valorFinal" cols="10" rows="2" class="res"></textarea>
+    </div><hr>
+
+
+    <script>
+
+
+
+
+
+
+
+
+
+
+     //   <!--EXERCICIO 1-->
+        let num1 = 5;
+        let num2 = 7;
+        soma = num1 + num2;
+        subtracao = num1-num2;
+        divisao = num1/num2;
+        multiplicacao = num1*num2;
+        alert("A soma de "+num1+" e "+num2+" é igual a "+soma+
+        "\nA subtração de "+num1+" e "+num2+" é igual a "+subtracao+
+        "\nA divisão de "+num1+" e "+num2+" é igual a "+divisao+
+        "\nA multiplicação de "+num1+" e "+num2+" é igual a "+multiplicacao)
+
+    //   <!--EXERCICIO 2-->
+
+        var $txtMsg = document.getElementById('msg');
+        for(var i = 10; i<=100; i++){
+            $txtMsg.innerHTML += i +' , ';
+        }
+
+
+
+    //   <!--EXERCICIO 3-->
+
+    const num = 5;
+    var $text = document.getElementById("text")
+    for(var i = 0; i <= 10; i++){
+        resultado = num * i;
+        $text.innerHTML += num +' X '+ i +' = '+resultado+'\n'
+    }
+    
+    //   <!--EXERCICIO 4-->
+    var $btn = document.querySelector('#click');
+    $btn.addEventListener('click',calcular);
+
+    function calcular(){
+    var number = $number = document.getElementById("number").value;
+    var $exerc4 = document.getElementById("exerc4");
+    $exerc4.innerHTML = "";
+    for(var i = 0; i<=10; i++){
+        resultado = number * i;
+        $exerc4.innerHTML += number + ' X ' + i + ' = '+resultado+'\n'
+    }
+    }
+
+
+   //   <!--EXERCICIO 5-->  
+  
+   var $resultado = document.getElementById("res");
+   var $operador = document.getElementById("operador");
+   var $btn2 = document.querySelector("#calcule");
+   $btn2.addEventListener('click', Calcular);
+
+   function Calcular(){
+    $resultado.innerHTML = "";
+    var num1 =parseFloat(document.getElementById("num1").value);
+    var num2 =parseFloat(document.getElementById("num2").value);
+
+    if (isNaN(num1) || isNaN(num2)) {
+        $resultado.innerHTML = "Por favor, insira números válidos.";
+        return;
+    }
+    
+   switch($operador.value){
+    case "+":
+        $resultado.innerHTML += num1 + num2;
+        break;
+    case "-":
+        $resultado.innerHTML += num1 - num2;
+        break;
+    case "*":
+       $resultado.innerHTML += num1 * num2;
+        break;
+    case "/":
+            if (num2 === 0) {
+                $resultado.innerHTML = "Divisão por zero não é permitida.";
+            } else {
+                $resultado.innerHTML = num1 / num2;
+            }
+            break;
+        default:
+            $resultado.innerHTML = "Operador inválido.";
+            break;
+   }
+
+   }
+
+   //   <!--EXERCICIO 6--> 
+ var array = [1,2,3,4,5,6,7,8,9,10];
+ var pares = [];
+
+ for(var i = 0; i< array.length; i++){
+    if(array[i] % 2 ==0){
+        pares.push(array[i]);
+    }
+
+ }
+$pares = document.getElementById("pares");
+console.log(pares)
+$pares.innerHTML += pares.join(', ');
+
+
+
+
+   //   <!--EXERCICIO 7--> 
+   var $valorfinal = document.getElementById("valorFinal");
+   var $btnCalcular = document.getElementById("btnCalcular");
+   $btnCalcular.addEventListener('click', CalcularCar);
+
+   function CalcularCar(){
+    var custoFabrica = parseFloat(document.getElementById("custoFabrica").value);
+    var imposto = parseFloat(document.getElementById("percImposto").value);
+    var distribuidor = parseFloat(document.getElementById("percDistribuidor").value);
+        var calcDistribuidor = custoFabrica * distribuidor;
+        var calcimposto = custoFabrica * imposto;
+        var custoCarro = custoFabrica + calcDistribuidor + calcimposto;
+        console.log(custoCarro)
+        $valorfinal.innerHTML = custoCarro;
+   }
+
+
+
+    </script>
+
+</body>
+</html>
